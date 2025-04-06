@@ -1,7 +1,15 @@
 streamlit 
-langchain 
+langchain>=0.1.13
 huggingface_hub 
+langchainhub
+langchain-community
 sentence-transformers 
 faiss-cpu 
 python-dotenv 
 pypdf
+langchainhub
+faiss-cpu
+sentence-transformers
+PyMuPDF
+ollama
+python-dotenv
