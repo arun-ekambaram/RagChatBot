@@ -2,17 +2,23 @@ from langchain_community.llms import Ollama
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 
-
 def get_rag_chain(retriever):
     template = """
-    You are a helpful assistant. Answer only using the information from the document.
-    If the answer is not present, say "The document does not contain that information."
+    You are a helpful assistant. Use only the provided context to answer the question.
+    If the answer is not in the context, say "The document does not contain that information."
 
-    Question: {question}
+    Context:
+    {context}
+
+    Question:
+    {question}
     """
-    prompt = PromptTemplate.from_template(template)
+    prompt = PromptTemplate(
+        input_variables=["context", "question"],
+        template=template,
+    )
 
-    llm = Ollama(model="llama3")  
+    llm = Ollama(model="llama3")  # or "mixtral"
 
     qa_chain = RetrievalQA.from_chain_type(
         llm=llm,
