@@ -18,7 +18,7 @@ def get_rag_chain(retriever):
         template=template,
     )
 
-    llm = Ollama(model="llama3")  # or "mixtral"
+    llm = Ollama(model="llama3")  
 
     qa_chain = RetrievalQA.from_chain_type(
         llm=llm,
